@@ -31,6 +31,21 @@ To use this component in your project, follow these steps:
     ```bash
     npm install
 
+
+## Development
+  To start developing or make changes to the component:
+
+1. **Start the Development Server:**
+    
+    ```bash
+    npm run dev
+
+2. **Build the Project:**
+
+    ```bash
+    npm run build
+
+
 ## Usage
 
 1. **Add the Component to Your React Application:**
@@ -76,16 +91,3 @@ To use this component in your project, follow these steps:
       useEffect(() => {
         window.initHotspots(); // Calls the function to initialize hotspots
       }, []);
-
-## Development
-  To start developing or make changes to the component:
-
-1. **Start the Development Server:**
-    
-    ```bash
-    npm run dev
-
-2. **Build the Project:**
-
-    ```bash
-    npm run build
