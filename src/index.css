@@ -1,0 +1,7 @@
+.hotspot-component {
+  visibility: 'hidden';
+}
+
+.hotspot-component.visible {
+  opacity: 1;
+}

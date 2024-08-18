@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + React + TS</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <div id="hotspots">
+    <div id="hotspot1" class="hotspot-component"></div>
+  </div>
+
+  <div class="space-for-scroll" style="height: 500px"></div>
+
+  <!-- JSON Data -->
+  <script id="hotspotsData" type="application/json">
+      [
+        {
+          "id": "hotspot1",
+          "src": "/src/assets/shop1.png",
+          "hotspots": [
+            {
+              "top": "46%",
+              "left": "57%",
+              "product": {
+                "img": "/src/assets/shop1_product1.png",
+                "name": "ASHER Masă",
+                "price": "6884 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=1",
+                "detailsLink": "https://example.com/detailsLink?product=1"
+              }
+            },
+            {
+              "top": "52%",
+              "left": "6%",
+              "product": {
+                "img": "/src/assets/shop1_product2.png",
+                "name": "MADDISON Scaun",
+                "price": "1947 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=2",
+                "detailsLink": "https://example.com/detailsLink?product=2"
+              }
+            },
+            {
+              "top": "24%",
+              "left": "11%",
+              "product": {
+                "img": "/src/assets/shop1_product3.png",
+                "name": "FRANKWELL Etajeră",
+                "price": "1833 lei",
+                "description": "lată, 6 polițe",
+                "addToCartLink": "https://example.com/addToCartLink?product=3",
+                "detailsLink": "https://example.com/detailsLink?product=3"
+              }
+            },
+            {
+              "top": "28%",
+              "left": "46%",
+              "product": {
+                "img": "/src/assets/shop1_product4.png",
+                "name": "MYSTICAL WOMAN tablou",
+                "price": "658 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=4",
+                "detailsLink": "https://example.com/detailsLink?product=4"
+              }
+            },
+            {
+              "top": "8%",
+              "left": "53%",
+              "product": {
+                "img": "/src/assets/shop1_product5.png",
+                "name": "MILIANO Lustră 9x40W G9",
+                "price": "598,4 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=5",
+                "detailsLink": "https://example.com/detailsLink?product=5"
+              }
+            },
+            {
+              "top": "37%",
+              "left": "66%",
+              "product": {
+                "img": "/src/assets/shop1_product6.png",
+                "name": "LEELA Vas decorativ",
+                "price": "228 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=6",
+                "detailsLink": "https://example.com/detailsLink?product=6"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hotspot2",
+          "src": "/src/assets/shop2.png",
+          "hotspots": [
+            {
+              "top": "62%",
+              "left": "51%",
+              "product": {
+                "img": "/src/assets/shop2_product1.png",
+                "name": "RIVERA Comodă TV",
+                "price": "3.612,00 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=1",
+                "detailsLink": "https://example.com/detailsLink?product=1"
+              }
+            },
+            {
+              "top": "18%",
+              "left": "81%",
+              "product": {
+                "img": "/src/assets/shop2_product2.png",
+                "name": "RIVERA Etajeră",
+                "price": "3.782,00 lei",
+                "description": "2 uși, 1 sertar",
+                "addToCartLink": "https://example.com/addToCartLink?product=2",
+                "detailsLink": "https://example.com/detailsLink?product=2"
+              }
+            },
+            {
+              "top": "32%",
+              "left": "10%",
+              "product": {
+                "img": "/src/assets/shop2_product3.png",
+                "name": "RIVERA Etajeră",
+                "price": "2.916,00 lei",
+                "description": "4 polițe",
+                "addToCartLink": "https://example.com/addToCartLink?product=3",
+                "detailsLink": "https://example.com/detailsLink?product=3"
+              }
+            },
+            {
+              "top": "82%",
+              "left": "32%",
+              "product": {
+                "img": "/src/assets/shop2_product4.png",
+                "name": "LUIZIA Covor cameră",
+                "price": "1.273,00 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=4",
+                "detailsLink": "https://example.com/detailsLink?product=4"
+              }
+            },
+            {
+              "top": "47%",
+              "left": "14%",
+              "product": {
+                "img": "/src/assets/shop2_product5.png",
+                "name": "BLANCA Cutie pentru bijuterii",
+                "price": "238,00 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=5",
+                "detailsLink": "https://example.com/detailsLink?product=5"
+              }
+            },
+            {
+              "top": "36%",
+              "left": "82%",
+              "product": {
+                "img": "/src/assets/shop2_product6.png",
+                "name": "ULISE Set 2 suporturi cărți",
+                "price": "194,00 lei",
+                "description": "",
+                "addToCartLink": "https://example.com/addToCartLink?product=6",
+                "detailsLink": "https://example.com/detailsLink?product=6"
+              }
+            }
+          ]
+        }
+      ]
+    </script>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
