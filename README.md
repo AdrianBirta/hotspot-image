@@ -1,5 +1,5 @@
 # Hotspot Image Component
-![Hotspot Image Component](./src/assets/readme_pic.png)
+  ![Hotspot Image Component](./src/assets/readme_pic.png)
 
 ## Overview
 
