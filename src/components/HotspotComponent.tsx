@@ -26,14 +26,17 @@ interface HotspotComponentProps {
   };
 };
 
-const HotspotComponent: React.FC<HotspotComponentProps> = ({ data }) => {
+const HotspotComponent: React.FC<HotspotComponentProps> = ({ data, id }) => {
   const [hotspots, setHotspots] = useState<any>([]);
   const [hoveredHotspot, setHoveredHotspot] = useState<number | null>(null);
   const [hoveredTooltip, setHoveredTooltip] = useState<number | null>(null);
   const [hoveredImageContainer, setHoveredImageContainer] = useState<boolean>(false);
+  const [overImageContainer, setOverImageContainer] = useState<boolean>(false);
   const [hoveredFooterButtons, setHoveredFooterButtons] = useState<string>('');
+  const [hotspotActivation, setHotspotActivation] = useState<boolean>(false);
 
   const handleOnMouseEnterHotspotWrapper = (e: any, index: number) => {
+    setHotspotActivation(true)
     const targetElement = e;
     const hotspotRect = targetElement.getBoundingClientRect();
     const container = targetElement.closest('[data-imagecontainer]');
@@ -70,7 +73,14 @@ const HotspotComponent: React.FC<HotspotComponentProps> = ({ data }) => {
     setHoveredHotspot(index);
   };
 
+  const handleEnterTooltip = (index: number) => {
+    setHoveredTooltip(index);
+    setHoveredImageContainer(false);
+    setHotspotActivation(true)
+  }
+
   const handleTooltipVisibility = (Type: string) => {
+    setHotspotActivation(false)
     setHoveredImageContainer(true);
     setTimeout(() => {
       if (Type === 'H') {
@@ -82,8 +92,10 @@ const HotspotComponent: React.FC<HotspotComponentProps> = ({ data }) => {
   }
 
   useEffect(() => {
-    const hotspots = Array.from(document.querySelectorAll('[data-hotspot]')).map(hotspot => hotspot);
+    const hotspot = document.getElementById(id);
+    const hotspots = Array.from(hotspot!.querySelectorAll('[data-hotspot]')).map(hotspot => hotspot);
     setHotspots([...hotspots]);
+    console.log('hotspots:', hotspots);
   }, [])
 
   return (
@@ -91,8 +103,9 @@ const HotspotComponent: React.FC<HotspotComponentProps> = ({ data }) => {
 
       <ImageContainer
         data-imagecontainer
+        onMouseOver={() => setOverImageContainer(true)}
         onMouseEnter={() => setHoveredImageContainer(true)}
-        onMouseLeave={() => setHoveredImageContainer(false)}
+        onMouseLeave={() => { setOverImageContainer(false); setHoveredImageContainer(false) }}
       >
         <ImageFloor src={data.src} alt="Hotspot" />
         <ImageBadge>nou</ImageBadge>
@@ -114,12 +127,14 @@ const HotspotComponent: React.FC<HotspotComponentProps> = ({ data }) => {
                 <Hotspot
                   size={hoveredImageContainer ? '7' : '10'}
                   $isHovered={isHovered}
+                  $active={hotspotActivation}
+                  $isOverImageContainer={overImageContainer}
                 />
               </HotspotWrapper>
               <Tooltip
                 $visibility={hoveredHotspot === index || hoveredTooltip === index ? 'visible' : 'hidden'}
                 data-tooltip
-                onMouseEnter={() => { setHoveredTooltip(index); setHoveredImageContainer(false); }}
+                onMouseEnter={() => handleEnterTooltip(index)}
                 onMouseLeave={() => handleTooltipVisibility('T')}
               >
                 <a href={hotspot.product.detailsLink}>

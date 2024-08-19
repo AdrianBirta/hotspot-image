@@ -8,6 +8,7 @@ export const HotspotComponentContainer = styled.div`
   margin: 0 auto;
   border-radius: 5px;
   overflow: hidden;
+  transition: box-shadow .3s ease;
 
   &:hover {
     box-shadow: 0px 7px 18px 1px #CCC;
@@ -60,16 +61,21 @@ export const HotspotWrapper = styled.div<{
   &:hover > div:first-child,
   ${props => props.$isHovered && `
     & > div:first-child {
-      background-color: #ff5b00;
       box-shadow: 0px 0px 5px 1px #ff5b00;
     }
   `}
 `;
 
-export const Hotspot = styled.div<{ size: string; $isHovered: boolean; }>`
+export const Hotspot = styled.div<{ $active: boolean; size: string; $isHovered: boolean; $isOverImageContainer: boolean }>`
   width: ${props => props.$isHovered ? 7 : props.size}px;
   height: ${props => props.$isHovered ? 7 : props.size}px;
-  background-color: #fff;
+  background-color: ${props => props.$isHovered ? '#ff5b00' : '#fff'};
+  opacity: ${props =>
+    !props.$isOverImageContainer
+      ? 1 // When not hovering the image, all hotspots are fully visible
+      : props.$isOverImageContainer && !props.$active
+        ? 1 // The hovered hotspot is fully visible
+        : props.$isHovered ? 1 : 0.3};
   box-shadow: 0px 0px 2px 2px #333;
   transition: .1s ease-in-out;
   border-radius: 50%;

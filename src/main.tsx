@@ -60,8 +60,6 @@ window.addEventListener('scroll', () => {
 
     hotspotsContainer?.appendChild(newDiv);
 
-    console.log('New div added to body with id: hotspot2');
-
     window.initHotspots();
 
     isHotspot2Added = true; // Set the flag to true to prevent adding more components
