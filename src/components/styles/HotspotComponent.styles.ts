@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const HotspotComponentContainer = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 554px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   border-radius: 5px;
   overflow: hidden;
   transition: box-shadow .3s ease;
@@ -37,6 +37,21 @@ export const ImageBadge = styled.p`
   &:hover {
     background-color: #000000;
     color: #eeeeee;
+  }
+`
+
+export const ViewAllProducts = styled.button`
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  background-color: #ddd;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: #fff;
+
   }
 `
 
