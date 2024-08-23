@@ -10,10 +10,13 @@ const App: React.FC = () => {
   const [visibleHotspotCount, setVisibleHotspotCount] = useState<number>(1);
   const [isHotspot2Added, setIsHotspot2Added] = useState<boolean>(false);
 
+  // Effect to initialize hotspots and set up scroll listener
   useEffect(() => {
-    const data: HotspotData[] = JSON.parse(document.getElementById('hotspotsData')!.textContent!);
+    // Initialize hotspots
+    const data = window.initHotspots(visibleHotspotCount);
     setHotspots(data);
 
+    // Scroll event handler
     const handleScroll = () => {
       if (window.scrollY > 300 && !isHotspot2Added) {
         setVisibleHotspotCount(prevCount => prevCount + 1);
@@ -26,7 +29,7 @@ const App: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHotspot2Added]);
+  }, [isHotspot2Added, visibleHotspotCount]);
 
   const handleViewAllProducts = (data: HotspotData) => {
     setSelectedHotspotData(data);
@@ -40,7 +43,7 @@ const App: React.FC = () => {
   return (
     <div>
       <div id="hotspots">
-        {hotspots.slice(0, visibleHotspotCount).map((hotspotData: HotspotData) => (
+        {hotspots.map((hotspotData: HotspotData) => (
           <HotspotComponent
             key={hotspotData.src}
             id={hotspotData.src}
